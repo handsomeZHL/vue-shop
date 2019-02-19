@@ -18,11 +18,11 @@
           text-color="#fff"
           active-text-color="#409EFF"
           :unique-opened="true"
-          :style="menushow ? 'width:65px;': 'width:200px;'"
           :collapse="menushow"
           :collapse-transition="false"
+          :router="true"
         >
-          <el-submenu v-for="(item,k) in menuList" :key="item.id" :index="item.id+''">
+          <el-submenu v-for="(item,k) in menuList" :key="item.id" :index="item.id+''" :style="menushow ? 'width:65px;': 'width:200px;'">
             <template slot="title">
               <i :class="'iconfont icon-'+menuIcon[k]"></i>
               <span>{{item.authName}}</span>
@@ -31,7 +31,7 @@
               <el-menu-item
                 v-for="subItem in item.children"
                 :key="subItem.id"
-                :index="item.id +''+ subItem.id"
+                :index="subItem.path"
               >
                 <i class="el-icon-menu"></i>
                 <span>{{subItem.authName}}</span>
